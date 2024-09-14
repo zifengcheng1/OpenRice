@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./css/tailwind.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="./js/ingredientListing.js" async></script>
+    <title>OpenRice | Ingredient Listing</title>
+  </head>
+  <body>
+    <header class="px-6 pl-6 pr-12 border-b-2 flex items-center border-gray-300 bg-brand-50">
+      <div class="flex w-full gap-2 items-center">
+        <div class="w-24 h-24">
+          <img src="./assests/icons/logo.png" />
+        </div>
+        <h2 class="font-bold">List ingredident</h2>
+      </div>
+      <a class="flex justify-center items-center w-11 h-11" href="./index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12 text-black hover:text-gray-700">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+        </svg>          
+      </a>
+    </header>
+    <div class="px-12 py-4">
+      <form class="gap-6 flex flex-col">
+        <div class="flex flex-col gap-4">
+          <label for="category">Item name</label>
+          <input
+            type="text"
+            placeholder="Enter the item name"
+            class="text-field"
+            id="itemName"
+          />
+        </div>
+        <div class="flex flex-col gap-4">
+          <label for="category">Purchase origin</label>
+          <input
+            type="text"
+            placeholder="Enter the purchase origin"
+            class="text-field"
+            id="origin"
+          />
+        </div>
+        <div class="flex flex-col gap-4">
+          <label for="category">Purchase date</label>
+          <input type="date" class="text-field" id="purchaseDate"/>
+        </div>
+        <div class="flex flex-col gap-4">
+          <label for="category">Expiry date</label>
+          <input type="date" class="text-field" id="expiryDate"/>
+        </div>
+        <div class="flex flex-col gap-4 mb-8">
+          <label for="category">Category</label>
+          <div class="flex gap-3">
+            <button type="button" data-value="vegetables" class="btn-tag">
+                <div class="rounded-full bg-brand-100 p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <path d="M37.1255 15.4458C37.1255 17.3023 36.388 19.0828 35.0752 20.3956C33.7625 21.7083 31.9819 22.4458 30.1254 22.4458C28.4201 22.4563 26.7717 21.8326 25.5004 20.6958C24.7101 22.1757 23.5218 23.4052 22.0697 24.2456C20.6177 25.086 18.9596 25.5037 17.2827 25.4517C15.6058 25.3997 13.9768 24.8801 12.5796 23.9513C11.1824 23.0226 10.0726 21.7218 9.37545 20.1958C8.68789 20.7004 7.85305 20.964 7.00042 20.9458C6.40947 20.9458 5.82432 20.8294 5.27835 20.6033C4.73239 20.3771 4.23633 20.0457 3.81847 19.6278C3.4006 19.2099 3.06912 18.7139 2.84297 18.1679C2.61683 17.6219 2.50045 17.0368 2.50045 16.4458C2.48775 15.5608 2.74379 14.6927 3.23478 13.9562C3.72577 13.2197 4.42857 12.6495 5.25043 12.3208C5.03772 11.6338 4.95301 10.9135 5.00045 10.1958C5.01148 8.61816 5.50373 7.08143 6.41147 5.79101C7.31921 4.50059 8.5992 3.51796 10.0803 2.97443C11.5615 2.4309 13.1732 2.35236 14.7001 2.74931C16.2271 3.14626 17.5965 3.99979 18.6254 5.19583C20.0785 4.13939 21.8289 3.5705 23.6254 3.57083C25.1986 3.56995 26.7347 4.04782 28.0297 4.94093C29.3247 5.83403 30.3173 7.10009 30.8755 8.57083C32.5884 8.72719 34.1805 9.51998 35.3376 10.7927C36.4946 12.0655 37.1326 13.7258 37.1255 15.4458Z" stroke="#30535A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M30.1254 22.4458C30.1254 22.4458 24.0004 23.5708 24.0004 37.4458H17.6254C17.6254 37.4458 18.0004 27.8208 11.7504 23.1958" stroke="#30535A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3>Vegetables</h3>
+              </button>
+
+            <button type="button" data-value="meat" class="btn-tag">
+              <div class="rounded-full bg-brand-100 p-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                >
+                  <path
+                    d="M20.9281 15L26.3031 9.625C25.6688 8.99676 25.3092 8.14277 25.3031 7.25C25.3343 6.33165 25.713 5.45941 26.3628 4.80967C27.0125 4.15992 27.8848 3.78116 28.8031 3.75C29.7095 3.78239 30.568 4.16541 31.1976 4.81831C31.8271 5.47121 32.1787 6.343 32.1781 7.25C32.7665 7.21784 33.3534 7.33474 33.8845 7.58986C34.4157 7.84497 34.8738 8.23004 35.2165 8.70939C35.5591 9.18874 35.7752 9.74684 35.8447 10.332C35.9142 10.9171 35.8349 11.5103 35.614 12.0565C35.3932 12.6028 35.038 13.0845 34.5814 13.457C34.1248 13.8294 33.5816 14.0805 33.0021 14.1871C32.4226 14.2936 31.8255 14.2522 31.2663 14.0665C30.7071 13.8808 30.2038 13.557 29.8031 13.125L24.4281 18.625"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M22.6781 26C22.7636 28.1796 22.0863 30.3209 20.763 32.0549C19.4396 33.7889 17.553 35.0072 15.4281 35.5C13.9509 35.848 12.4118 35.8369 10.9398 35.4679C9.46769 35.0988 8.10546 34.3824 6.96713 33.3787C5.8288 32.3751 4.94749 31.1133 4.39701 29.699C3.84652 28.2847 3.64287 26.7591 3.8031 25.25C4.01959 22.9396 5.08522 20.7916 6.79386 19.2215C8.50249 17.6514 10.7327 16.7708 13.0531 16.75C14.872 16.6587 16.5803 15.8495 17.8031 14.5L19.1781 13.25L25.8031 19.875L24.9281 20.875C24.2207 21.5285 23.6557 22.321 23.2686 23.2028C22.8814 24.0847 22.6804 25.0369 22.6781 26Z"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>Meat</h3>
+            </button>
+
+            <button type="button" data-value="fruits" class="btn-tag">
+              <div class="rounded-full bg-brand-100 p-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                >
+                  <path
+                    d="M28.5019 12.5L30.8769 7.12502L24.2519 9.49997L20.3769 3.75L16.3769 9.49997L9.8769 7.12502L12.2519 12.5"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.2519 20.5V22.25"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.8769 19V20.875"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M26.6269 19V20.875"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M23.5019 25.5V27.375"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M16.8769 25.5V27.375"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M17.3769 35.5C17.7403 35.9446 18.198 36.3028 18.7168 36.5488C19.2357 36.7948 19.8027 36.9223 20.3769 36.9223C20.9511 36.9223 21.5181 36.7948 22.0369 36.5488C22.5558 36.3028 23.0134 35.9446 23.3769 35.5L30.6269 27.25C32.3112 25.3059 33.2426 22.8223 33.2519 20.25C33.2685 19.2487 33.0876 18.2538 32.7196 17.3224C32.3516 16.3909 31.8038 15.5411 31.1073 14.8214C30.4108 14.1017 29.5794 13.5263 28.6605 13.128C27.7416 12.7297 26.7533 12.5163 25.7519 12.5H15.0019C14.0005 12.5163 13.0122 12.7297 12.0933 13.128C11.1744 13.5263 10.343 14.1017 9.64652 14.8214C8.95006 15.5411 8.40218 16.3909 8.0342 17.3224C7.66622 18.2538 7.48535 19.2487 7.5019 20.25C7.45189 22.8328 8.39097 25.337 10.1269 27.25L17.3769 35.5Z"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>Fruits</h3>
+            </button>
+
+            <button type="button" data-value="pantry" class="btn-tag">
+              <div class="rounded-full bg-brand-100 p-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                >
+                  <path
+                    d="M16.75 37.1968C24.6201 37.1968 31 30.8168 31 22.9468C31 15.0767 24.6201 8.69678 16.75 8.69678C8.87994 8.69678 2.5 15.0767 2.5 22.9468C2.5 30.8168 8.87994 37.1968 16.75 37.1968Z"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M21.25 5.32181C23.0568 3.51502 25.5073 2.5 28.0625 2.5C30.6177 2.5 33.0682 3.51502 34.875 5.32181C36.6818 7.1286 37.6968 9.57914 37.6968 12.1343C37.6968 14.6895 36.6818 17.14 34.875 18.9468"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M29 10.4468C29.9665 10.4468 30.75 9.66327 30.75 8.69677C30.75 7.73027 29.9665 6.94678 29 6.94678C28.0335 6.94678 27.25 7.73027 27.25 8.69677C27.25 9.66327 28.0335 10.4468 29 10.4468Z"
+                    fill="#30535A"
+                  />
+                  <path
+                    d="M16.75 25.5718C17.7165 25.5718 18.5 24.7883 18.5 23.8218C18.5 22.8553 17.7165 22.0718 16.75 22.0718C15.7835 22.0718 15 22.8553 15 23.8218C15 24.7883 15.7835 25.5718 16.75 25.5718Z"
+                    fill="#30535A"
+                  />
+                  <path
+                    d="M18.5 17.3218C19.4665 17.3218 20.25 16.5383 20.25 15.5718C20.25 14.6053 19.4665 13.8218 18.5 13.8218C17.5335 13.8218 16.75 14.6053 16.75 15.5718C16.75 16.5383 17.5335 17.3218 18.5 17.3218Z"
+                    fill="#30535A"
+                  />
+                  <path
+                    d="M24.625 27.3218C25.5915 27.3218 26.375 26.5383 26.375 25.5718C26.375 24.6053 25.5915 23.8218 24.625 23.8218C23.6585 23.8218 22.875 24.6053 22.875 25.5718C22.875 26.5383 23.6585 27.3218 24.625 27.3218Z"
+                    fill="#30535A"
+                  />
+                  <path
+                    d="M12.75 32.3218C13.7165 32.3218 14.5 31.5383 14.5 30.5718C14.5 29.6053 13.7165 28.8218 12.75 28.8218C11.7835 28.8218 11 29.6053 11 30.5718C11 31.5383 11.7835 32.3218 12.75 32.3218Z"
+                    fill="#30535A"
+                  />
+                  <path
+                    d="M10 21.5718C10.9665 21.5718 11.75 20.7883 11.75 19.8218C11.75 18.8553 10.9665 18.0718 10 18.0718C9.0335 18.0718 8.25 18.8553 8.25 19.8218C8.25 20.7883 9.0335 21.5718 10 21.5718Z"
+                    fill="#30535A"
+                  />
+                </svg>
+              </div>
+              <h3>Pantry</h3>
+            </button>
+
+            <button type="button" data-value="beverages" class="btn-tag">
+              <div class="rounded-full bg-brand-100 p-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                >
+                  <path
+                    d="M23.0001 2.5V12.5H23.1251C24.8488 12.6857 26.4422 13.5044 27.5968 14.7976C28.7514 16.0908 29.3851 17.7664 29.3751 19.5V38H10.0001V19.375C9.98998 17.6744 10.6105 16.0305 11.7417 14.7607C12.873 13.4909 14.4347 12.6855 16.1251 12.5V2.5H23.0001Z"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M16.1251 7.125H23.0001"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10.0001 23H29.3751"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10.0001 29.625H29.3751"
+                    stroke="#30535A"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>Beverages</h3>
+            </button>
+          </div>
+          <input type="hidden" id="selectedTag" />
+        </div>
+
+        <div class="w-full flex justify-center gap-2 items-center">
+          <button
+            type="button"
+            class="btn-secondary"
+            onclick="window.location.href='./selection.html';"
+          >
+            Cancel
+          </button>
+          <button disabled type="button" class="btn-primary-inactive" id="submitBTN">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
