@@ -27,6 +27,7 @@ function checkInput() {
 
 categoryTags.forEach(button => {
     button.addEventListener('click', function(){
+        // If the button is active while clicked, deselect it
         if (tagInput.value === this.getAttribute('data-value')){
             clearCategory();
             tagInput.value = '';
@@ -46,6 +47,7 @@ categoryTags.forEach(button => {
     field.addEventListener('input', checkInput);
 });
 
+// Add code to store to json here
 submitBTN.addEventListener('click', function(){
     window.location.href='./listing-successful.html';
 })
