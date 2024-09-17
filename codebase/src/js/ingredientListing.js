@@ -47,7 +47,37 @@ categoryTags.forEach(button => {
     field.addEventListener('input', checkInput);
 });
 
-// Add code to store to json here
+submitBTN.addEventListener('click', store_submission, useCapture=true);
 submitBTN.addEventListener('click', function(){
     window.location.href='./listing-successful.html';
 })
+
+
+function store_submission() {
+    const submission = new Object();
+    submission.category = tagInput.value;
+    submission.name = itemName.value;
+    submission.origin = origin.value;
+    submission.purchaseDate = purchaseDate.value;
+    submission.expiryDate = expiryDate.value;
+    var emptyLocker = lockerNum();
+    localStorage.setItem(emptyLocker.toString(), JSON.stringify(submission));
+}
+
+function lockerNum() {
+    const lockers = [1,2,3,4];
+    var emptyLocker = lockers.findIndex(isEmpty);
+    console.log(emptyLocker)
+    if (emptyLocker >= 0) {
+        return lockers[emptyLocker];
+    } else {
+        return 0;
+    }
+}
+
+function isEmpty(num) {
+    if (localStorage.getItem(num.toString()) == null) {
+        return true;
+    }
+    return false;
+}

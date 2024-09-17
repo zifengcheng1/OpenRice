@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <script src="./js/submitForm.js" async></script>
+    <script src="./js/listing-successful.js" async></script>
     <title>OpenRice | Successful</title>
   </head>
   <body class="bg-brand-50">
@@ -17,8 +17,8 @@
                 <path d="M90.375 119.5L110.458 139.417L150.625 99.5833M210.875 119.5C210.875 131.27 208.537 142.924 203.996 153.798C199.454 164.672 192.797 174.552 184.405 182.874C176.013 191.197 166.05 197.799 155.085 202.303C144.12 206.807 132.368 209.125 120.5 209.125C108.632 209.125 96.8798 206.807 85.915 202.303C74.9502 197.799 64.9873 191.197 56.5952 182.874C48.2031 174.552 41.5462 164.672 37.0044 153.798C32.4626 142.924 30.125 131.27 30.125 119.5C30.125 95.73 39.6466 72.9335 56.5952 56.1256C73.5438 39.3176 96.5311 29.875 120.5 29.875C144.469 29.875 167.456 39.3176 184.405 56.1256C201.353 72.9335 210.875 95.73 210.875 119.5Z" stroke="#30535a" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </div>
-        <span class="font-poppins text-5xl font-bold mb-2">Listed successfully!</span>
-        <h3 class="max-w-96 text-center text-gray-800">Please put your ingredient in <strong>Locker 1</strong>, and close the door afterwards.</h3>
+        <span id="title" class="font-poppins text-5xl font-bold mb-2">Listed successfully!</span>
+        <h3 id="message" class="max-w-96 text-center text-gray-800">Please put your ingredient in Locker <strong><span id="locker"></span></strong>, and close the door afterwards.</h3>
     </div>
     <script>
         setTimeout(function() {
