@@ -1,3 +1,7 @@
+if (localStorage.getItem("lockersFilled") == "4") {
+    window.location.href="listing-successful.html"
+}
+
 const categoryTags = document.querySelectorAll('.btn-tag');
 const tagInput = document.getElementById('selectedTag');
 const itemName = document.getElementById('itemName');
