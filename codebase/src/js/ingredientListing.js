@@ -1,3 +1,7 @@
+if (localStorage.getItem("lockersFilled") == "4") {
+    window.location.href="listing-successful.html"
+}
+
 const categoryTags = document.querySelectorAll('.btn-tag');
 const tagInput = document.getElementById('selectedTag');
 const itemName = document.getElementById('itemName');
@@ -27,6 +31,7 @@ function checkInput() {
 
 categoryTags.forEach(button => {
     button.addEventListener('click', function(){
+        // If the button is active while clicked, deselect it
         if (tagInput.value === this.getAttribute('data-value')){
             clearCategory();
             tagInput.value = '';
@@ -46,6 +51,37 @@ categoryTags.forEach(button => {
     field.addEventListener('input', checkInput);
 });
 
+submitBTN.addEventListener('click', store_submission, useCapture=true);
 submitBTN.addEventListener('click', function(){
     window.location.href='./listing-successful.html';
 })
+
+
+function store_submission() {
+    const submission = new Object();
+    submission.category = tagInput.value;
+    submission.name = itemName.value;
+    submission.origin = origin.value;
+    submission.purchaseDate = purchaseDate.value;
+    submission.expiryDate = expiryDate.value;
+    var emptyLocker = lockerNum();
+    localStorage.setItem(emptyLocker.toString(), JSON.stringify(submission));
+}
+
+function lockerNum() {
+    const lockers = [1,2,3,4];
+    var emptyLocker = lockers.findIndex(isEmpty);
+    console.log(emptyLocker)
+    if (emptyLocker >= 0) {
+        return lockers[emptyLocker];
+    } else {
+        return 0;
+    }
+}
+
+function isEmpty(num) {
+    if (localStorage.getItem(num.toString()) == null) {
+        return true;
+    }
+    return false;
+}
