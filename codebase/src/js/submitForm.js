@@ -1,5 +1,5 @@
-var textField = document.getElementById('textField');
-//const submitBTN = document.getElementById('submitBTN');
+const textField = document.getElementById('textField');
+const submitBTN = document.getElementById('submit-btn');
 textField.addEventListener('input', checkInput);
 
 function checkInput() {
