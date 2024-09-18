@@ -56,4 +56,8 @@
 .text-field{
   @apply w-full border-gray-300 font-poppins rounded-lg border-2 text-lg px-4 py-3 box-border;
 }
+.sda{
+  @apply w-full;
+}
+
 
