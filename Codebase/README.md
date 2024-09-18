@@ -1,2 +1,0 @@
-# OpenRice
-Welcome
