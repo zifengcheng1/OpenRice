@@ -1,7 +1,7 @@
 
 
 const textField = document.getElementById('textField');
-const submitBTN = document.getElementById('submitBTN');
+const submitBTN = document.getElementById('submit-btn');
 
 textField.addEventListener('input', checkInput);
 
