@@ -1,8 +1,5 @@
-
-
 const textField = document.getElementById('textField');
-const submitBTN = document.getElementById('submitBTN');
-
+const submitBTN = document.getElementById('submit-btn');
 textField.addEventListener('input', checkInput);
 
 function checkInput() {
@@ -17,4 +14,19 @@ function checkInput() {
     }
 }
 
+function lockerNum() {
+    const lockers = [1,2,3,4];
+    var emptyLocker = lockers.findIndex(isEmpty);
+    if (emptyLocker >= 0) {
+        return lockers[emptyLocker];
+    } else {
+        return 0;
+    }
+}
 
+function isEmpty(num) {
+    if (localStorage.getItem(num.toString()) == null) {
+        return true;
+    }
+    return false;
+}

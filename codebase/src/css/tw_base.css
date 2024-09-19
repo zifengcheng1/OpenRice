@@ -31,8 +31,9 @@
   }
 }
 
+/* -----Components----- */
 
-
+/* Primary Button */
 .btn-primary {
   @apply min-w-60 bg-brand-600 text-white rounded-full px-6 py-3 hover:bg-brand-500 text-center font-poppins text-xl font-medium focus:outline-none focus:ring focus:ring-brand-400 focus:ring-opacity-45;
 }
@@ -41,10 +42,12 @@
   @apply min-w-60 bg-brand-200 text-white rounded-full px-6 py-3 text-center font-poppins text-xl focus:outline-none font-medium focus:ring focus:ring-brand-400 focus:ring-opacity-45;
 }
 
+/* Secondary Button */
 .btn-secondary{
   @apply min-w-60 bg-brand-50 text-brand-950 border-brand-900 border-2 rounded-full px-6 py-3 text-center font-poppins text-xl font-medium focus:outline-none focus:ring focus:ring-brand-400 focus:ring-opacity-45;
 }
 
+/* Tag Button (large) */
 .btn-tag{
   @apply border-2 min-w-48 border-gray-200 rounded-md flex flex-col gap-2 justify-center items-center p-4;
 }
@@ -53,7 +56,39 @@
   @apply border-2 min-w-48 border-brand-800 rounded-md flex flex-col gap-2 justify-center items-center p-4;
 }
 
+/* Tag Button (small) */
+.category-tag{
+  @apply px-6 py-2 bg-white rounded-lg border-2 border-gray-200 text-black font-poppins font-medium text-sm;
+}
+
+.category-tag-clicked{
+  @apply px-6 py-2 bg-brand-600 rounded-lg text-white font-poppins font-medium text-sm;
+}
+
+/* Text Field */
 .text-field{
   @apply w-full border-gray-300 font-poppins rounded-lg border-2 text-lg px-4 py-3 box-border;
 }
+
+/* Ingredient Gallery */
+.gallery-grid{
+  @apply grid gap-6 grid-cols-3 w-full mb-16;
+}
+
+.gallery-item{
+  @apply border-2 border-gray-200 px-6 py-6 rounded-lg cursor-pointer;
+}
+
+
+/* Popup for Selection */
+.popup-screen{
+  @apply absolute w-screen h-screen hidden;
+}
+
+.overlay{
+  @apply fixed opacity-80 top-0 left-0 bg-black w-screen h-screen z-10;
+}
+
+
+
 
