@@ -59,6 +59,7 @@ function populateGallery(filter) {
             return;
         }
         var listing = document.querySelector('#ingredient-list-template').content.cloneNode(true);
+        listing.querySelector('#gallery-item').setAttribute('data-value', i.toString());
         listing.querySelector('#listing-name').textContent = data.name;
         listing.querySelector('#locker-num').textContent = i.toString();
         listing.querySelector('#purchase-date').textContent = data.purchaseDate;
