@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./css/tailwind.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./js/result.js" async></script>
+    <script src="./js/selectIngredient.js" async></script>
+    <title>OpenRice | Explore ingredients</title>
+  </head>
+  <body>
+    <!-- Popup Window for Selection  -->
+    <div class="popup-screen">
+      <div class="overlay"></div>
+      <div
+        class="absolute text-center items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl px-24 pt-8 pb-10 z-30"
+      >
+        <div class="flex w-full justify-center">
+          <div class="w-36 h-36 mb-2">
+            <img src="./assests/icons/logo.png" />
+          </div>
+        </div>
+        <div class="flex w-full flex-col mb-8">
+          <span class="font-poppins font-medium text-2xl">
+            Do you want to retrieve
+          </span>
+          <!-- Ingredient Name Based on Selection -->
+          <span class="font-poppins font-bold text-2xl">Ingredient Name</span>
+        </div>
+        <div class="flex gap-4">
+          <button type="button" class="btn-secondary" id="cancel-btn">
+            Cancel
+          </button>
+          <button
+            type="button"
+            class="btn-primary"
+            onclick="window.location.href='./select-Successful.html';"
+            id="confirm-btn"
+          >
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+    <header
+      class="px-6 pl-6 pr-12 border-b-2 flex items-center border-gray-300 bg-brand-50"
+    >
+      <div class="flex w-full gap-2 items-center">
+        <div class="w-24 h-24">
+          <img src="./assests/icons/logo.png" />
+        </div>
+        <h2 class="font-bold">Explore ingredidents</h2>
+      </div>
+      <a class="flex justify-center items-center w-11 h-11" href="./index.html">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-12 text-black hover:text-gray-700"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+          />
+        </svg>
+      </a>
+    </header>
+    <div class="px-12 py-4">
+      <div class="mb-3">
+        <h2>Items</h2>
+      </div>
+
+      <div class="flex w-full gap-4 mb-12">
+        <!-- Tag Buttons for Filtering The Result Based on Category  -->
+        <button type="button" data-value="all" class="category-tag-clicked">
+          All items
+        </button>
+        <button type="button" data-value="vegetables" class="category-tag">
+          Vegetables
+        </button>
+        <button type="button" data-value="meat" class="category-tag">
+          Meat
+        </button>
+        <button type="button" data-value="fruits" class="category-tag">
+          Fruits
+        </button>
+        <button type="button" data-value="pantry" class="category-tag">
+          Pantry
+        </button>
+        <button type="button" data-value="beverages" class="category-tag">
+          Beverages
+        </button>
+        <input type="hidden" id="selectedTag" />
+      </div>
+
+      <!-- Gallery Grid for Showing Ingreidents  -->
+      <div class="gallery-grid">
+
+        <!-- Ingreident Example 1 -->
+        <div data-value="ingredient1" class="gallery-item">
+          <!-- Category Icon (change svg) -->
+          <div class="flex w-full gap-4 mb-4">
+            <div class="rounded-full bg-brand-100 p-4 flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="45"
+                height="45"
+                viewBox="0 0 45 45"
+                fill="none"
+              >
+                <path
+                  d="M41.7661 17.3766C41.7661 19.4651 40.9365 21.4682 39.4596 22.945C37.9828 24.4219 35.9797 25.2516 33.8911 25.2516C31.9726 25.2634 30.1182 24.5617 28.688 23.2828C27.7989 24.9477 26.462 26.3309 24.8284 27.2763C23.1949 28.2217 21.3296 28.6917 19.443 28.6332C17.5565 28.5747 15.7239 27.9901 14.1521 26.9452C12.5802 25.9004 11.3317 24.4371 10.5474 22.7203C9.77387 23.2879 8.83468 23.5845 7.87547 23.5641C7.21066 23.5641 6.55236 23.4331 5.93815 23.1787C5.32393 22.9243 4.76587 22.5514 4.29578 22.0813C3.82568 21.6112 3.45276 21.0531 3.19834 20.4389C2.94393 19.8247 2.81301 19.1664 2.81301 18.5016C2.79871 17.5059 3.08677 16.5293 3.63913 15.7007C4.19149 14.8722 4.98215 14.2307 5.90673 13.8609C5.66744 13.088 5.57213 12.2777 5.62551 11.4703C5.63791 9.69543 6.19169 7.96661 7.2129 6.51489C8.23411 5.06317 9.6741 3.95771 11.3404 3.34623C13.0066 2.73476 14.8198 2.6464 16.5376 3.09297C18.2555 3.53954 19.7961 4.49976 20.9536 5.84531C22.5883 4.65681 24.5575 4.01681 26.5786 4.01718C28.3484 4.0162 30.0765 4.5538 31.5334 5.55854C32.9903 6.56328 34.1069 7.9876 34.7349 9.64218C36.662 9.81808 38.4531 10.71 39.7548 12.1418C41.0565 13.5737 41.7742 15.4415 41.7661 17.3766Z"
+                  stroke="#30535A"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M33.8911 25.2515C33.8911 25.2515 27.0005 26.5171 27.0005 42.1265H19.8286C19.8286 42.1265 20.2505 31.2983 13.2192 26.0952"
+                  stroke="#30535A"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <!-- Item name & Locker no. -->
+            <div class="flex flex-col justify-center">
+              <span class="text-2xl font-bold">Broccoli</span>
+              <div class="flex gap-1">
+                <h4>Locker</h4>
+                <span class="font-poppins text-base">1</span>
+              </div>
+            </div>
+          </div>
+          <!-- More Details -->
+          <div class="flex flex-col w-full gap-2">
+            <div class="flex w-full justify-between">
+              <span class="text-base">Puchase Date:</span>
+              <span class="text-base">16/09/2024</span>
+            </div>
+            <div class="flex w-full justify-between">
+              <span class="text-base">Expiry Date:</span>
+              <span class="text-base">02/10/2024</span>
+            </div>
+            <div class="flex w-full justify-between">
+              <span class="text-base">Puchase Origin:</span>
+              <span class="text-base">Woolies</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ingreident Example 2 -->
+        <div data-value="ingredient2" class="gallery-item">
+          <div class="flex w-full gap-4 mb-4">
+            <div class="rounded-full bg-brand-100 p-4 flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="45"
+                height="45"
+                viewBox="0 0 45 45"
+                fill="none"
+              >
+                <path
+                  d="M41.7661 17.3766C41.7661 19.4651 40.9365 21.4682 39.4596 22.945C37.9828 24.4219 35.9797 25.2516 33.8911 25.2516C31.9726 25.2634 30.1182 24.5617 28.688 23.2828C27.7989 24.9477 26.462 26.3309 24.8284 27.2763C23.1949 28.2217 21.3296 28.6917 19.443 28.6332C17.5565 28.5747 15.7239 27.9901 14.1521 26.9452C12.5802 25.9004 11.3317 24.4371 10.5474 22.7203C9.77387 23.2879 8.83468 23.5845 7.87547 23.5641C7.21066 23.5641 6.55236 23.4331 5.93815 23.1787C5.32393 22.9243 4.76587 22.5514 4.29578 22.0813C3.82568 21.6112 3.45276 21.0531 3.19834 20.4389C2.94393 19.8247 2.81301 19.1664 2.81301 18.5016C2.79871 17.5059 3.08677 16.5293 3.63913 15.7007C4.19149 14.8722 4.98215 14.2307 5.90673 13.8609C5.66744 13.088 5.57213 12.2777 5.62551 11.4703C5.63791 9.69543 6.19169 7.96661 7.2129 6.51489C8.23411 5.06317 9.6741 3.95771 11.3404 3.34623C13.0066 2.73476 14.8198 2.6464 16.5376 3.09297C18.2555 3.53954 19.7961 4.49976 20.9536 5.84531C22.5883 4.65681 24.5575 4.01681 26.5786 4.01718C28.3484 4.0162 30.0765 4.5538 31.5334 5.55854C32.9903 6.56328 34.1069 7.9876 34.7349 9.64218C36.662 9.81808 38.4531 10.71 39.7548 12.1418C41.0565 13.5737 41.7742 15.4415 41.7661 17.3766Z"
+                  stroke="#30535A"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M33.8911 25.2515C33.8911 25.2515 27.0005 26.5171 27.0005 42.1265H19.8286C19.8286 42.1265 20.2505 31.2983 13.2192 26.0952"
+                  stroke="#30535A"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="flex flex-col justify-center">
+              <span class="text-2xl font-bold">Broccoli</span>
+              <div class="flex gap-1">
+                <h4>Locker</h4>
+                <span class="font-poppins text-base">1</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col w-full gap-2">
+            <div class="flex w-full justify-between">
+              <span class="text-base">Puchase Date:</span>
+              <span class="text-base">16/09/2024</span>
+            </div>
+            <div class="flex w-full justify-between">
+              <span class="text-base">Expiry Date:</span>
+              <span class="text-base">02/10/2024</span>
+            </div>
+            <div class="flex w-full justify-between">
+              <span class="text-base">Puchase Origin:</span>
+              <span class="text-base">Woolies</span>
+            </div>
+          </div>
+        </div>
+        <!-- Ingreident Example 3 -->
+        <div data-value="ingredient3" class="gallery-item">
+          <div class="flex w-full gap-4 mb-4">
+            <div class="rounded-full bg-brand-100 p-4 flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="45"
+                height="45"
+                viewBox="0 0 45 45"
+                fill="none"
+              >
+                <path
+                  d="M41.7661 17.3766C41.7661 19.4651 40.9365 21.4682 39.4596 22.945C37.9828 24.4219 35.9797 25.2516 33.8911 25.2516C31.9726 25.2634 30.1182 24.5617 28.688 23.2828C27.7989 24.9477 26.462 26.3309 24.8284 27.2763C23.1949 28.2217 21.3296 28.6917 19.443 28.6332C17.5565 28.5747 15.7239 27.9901 14.1521 26.9452C12.5802 25.9004 11.3317 24.4371 10.5474 22.7203C9.77387 23.2879 8.83468 23.5845 7.87547 23.5641C7.21066 23.5641 6.55236 23.4331 5.93815 23.1787C5.32393 22.9243 4.76587 22.5514 4.29578 22.0813C3.82568 21.6112 3.45276 21.0531 3.19834 20.4389C2.94393 19.8247 2.81301 19.1664 2.81301 18.5016C2.79871 17.5059 3.08677 16.5293 3.63913 15.7007C4.19149 14.8722 4.98215 14.2307 5.90673 13.8609C5.66744 13.088 5.57213 12.2777 5.62551 11.4703C5.63791 9.69543 6.19169 7.96661 7.2129 6.51489C8.23411 5.06317 9.6741 3.95771 11.3404 3.34623C13.0066 2.73476 14.8198 2.6464 16.5376 3.09297C18.2555 3.53954 19.7961 4.49976 20.9536 5.84531C22.5883 4.65681 24.5575 4.01681 26.5786 4.01718C28.3484 4.0162 30.0765 4.5538 31.5334 5.55854C32.9903 6.56328 34.1069 7.9876 34.7349 9.64218C36.662 9.81808 38.4531 10.71 39.7548 12.1418C41.0565 13.5737 41.7742 15.4415 41.7661 17.3766Z"
+                  stroke="#30535A"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M33.8911 25.2515C33.8911 25.2515 27.0005 26.5171 27.0005 42.1265H19.8286C19.8286 42.1265 20.2505 31.2983 13.2192 26.0952"
+                  stroke="#30535A"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="flex flex-col justify-center">
+              <span class="text-2xl font-bold">Broccoli</span>
+              <div class="flex gap-1">
+                <h4>Locker</h4>
+                <span class="font-poppins text-base">1</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col w-full gap-2">
+            <div class="flex w-full justify-between">
+              <span class="text-base">Puchase Date:</span>
+              <span class="text-base">16/09/2024</span>
+            </div>
+            <div class="flex w-full justify-between">
+              <span class="text-base">Expiry Date:</span>
+              <span class="text-base">02/10/2024</span>
+            </div>
+            <div class="flex w-full justify-between">
+              <span class="text-base">Puchase Origin:</span>
+              <span class="text-base">Woolies</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <button
+          type="button"
+          class="btn-secondary"
+          onclick="window.location.href='./selection.html';"
+        >
+          Back
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
