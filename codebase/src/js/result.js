@@ -64,6 +64,7 @@ function populateGallery(filter) {
         listing.querySelector('#purchase-date').textContent = data.purchaseDate;
         listing.querySelector('#expiry-date').textContent = data.expiryDate;
         listing.querySelector('#purchase-origin').textContent = data.origin; 
+        listing.querySelector('#listing-graphic').src = "./assests/icons/" + category + ".svg"
         if (filter == "all" || category == filter) {
             document.getElementById('gallery-grid').appendChild(listing);
         }
