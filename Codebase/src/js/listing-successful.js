@@ -24,8 +24,9 @@ if (localStorage.getItem("lockersFilled") == null) {
 } else if (localStorage.getItem("lockersFilled") == "4") {
     document.getElementById("title").innerText = "Listing failed!";
     document.getElementById("message").innerText = "Sorry, all lockers are full. Please try again later";
+    document.getElementById("subtitle").innerText = "";
 } else {
     var lockerNum = Number(localStorage.getItem("lockersFilled")) + 1;
-    document.getElementById('locker').innerText = lockerNum.toString();
+    document.getElementById("locker").innerText = lockerNum.toString();
     localStorage.setItem("lockersFilled", lockerNum.toString());
 }

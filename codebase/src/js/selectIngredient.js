@@ -4,7 +4,10 @@ const cancelBTN = document.getElementById('cancel-btn');
 
 galleryItem.forEach(div => {
     div.addEventListener('click', function(){ 
+        var name = div.querySelector('#listing-name').textContent;
+        popupScreen.querySelector('#name').textContent = name;
         popupScreen.style.display="block";
+        
     });
 })
 
