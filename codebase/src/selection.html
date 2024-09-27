@@ -10,9 +10,36 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <script src="./js/errorMessage.js" async></script>
     <title>OpenRice | Select an action</title>
   </head>
   <body class="bg-brand-50">
+        <!-- Popup Window for Error Message  -->
+        <div class="popup-screen block">
+          <div class="overlay"></div>
+          <div
+            class="absolute text-center items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl px-24 pt-8 pb-10 z-30"
+          >
+            <div class="flex w-full justify-center">
+              <div class="w-36 h-36 mb-2">
+                <img src="./assests/icons/logo.png" />
+              </div>
+            </div>
+            <div class="flex w-full flex-col mb-8 gap-2">
+              <span class="font-poppins font-bold text-3xl">
+                Oopsie!
+              </span>
+              <span class="font-poppins text-xl">
+                All the lockers are currently full. Please come back another time or explore ingredients.
+              </span>
+            </div>
+            <div class="flex justify-center">
+              <button type="button" class="btn-primary" id="cancel-btn">
+                ok
+              </button>
+            </div>
+          </div>
+        </div>
     <div class="h-screen flex flex-col items-center">
       <div class="w-28 h-28 mt-4 mb-6">
         <img src="./assests/icons/logo.png" />
@@ -21,8 +48,8 @@
         <h2 class="font-black mb-12">What are you looking for today?</h2>
         <div class="flex gap-6 mb-12">
           <a
-            href="./list-ingredient.html"
-            class="bg-white border-2 rounded-md border-gray-200 flex flex-col min-w-96 p-16 justify-center items-center"
+            class="cursor-pointer bg-white border-2 rounded-md border-gray-200 flex flex-col min-w-96 p-16 justify-center items-center"
+            id="listing-btn"
           >
             <div class="bg-brand-100 rounded-full p-10 mb-10">
               <svg
