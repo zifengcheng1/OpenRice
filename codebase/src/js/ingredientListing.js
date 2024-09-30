@@ -60,8 +60,20 @@ btnTags.forEach(button => {
 });
 
 submitBTN.addEventListener('click', store_submission, useCapture=true);
-submitBTN.addEventListener('click', function(){
-    window.location.href='./listing-successful.html';
+submitBTN.addEventListener('click', async () => {
+    
+    const port = await navigator.serial.requestPort();
+    await port.open({ baudRate: 9600 });
+    const writer = port.writable.getWriter()
+    const data = new Uint8Array([99])
+    await writer.write(data)
+    /**
+    const textEncoder = new TextEncoderStream()
+    const writableStreamClosed = textEncoder.readable.pipeTo(port.writable)
+    const writer = textEncoder.writable.getWriter()
+    await writer.write("c")
+    **/
+    //window.location.href='./listing-successful.html';
 })
 
 
@@ -74,12 +86,13 @@ function store_submission() {
     submission.expiryDate = expiryDate.value;
     var emptyLocker = lockerNum();
     localStorage.setItem(emptyLocker.toString(), JSON.stringify(submission));
+    //port = await navigator.serial.requestPort();
+    //await port.open({ baudRate: 9600 });
 }
 
 function lockerNum() {
     const lockers = [1,2,3,4];
     var emptyLocker = lockers.findIndex(isEmpty);
-    console.log(emptyLocker)
     if (emptyLocker >= 0) {
         return lockers[emptyLocker];
     } else {
