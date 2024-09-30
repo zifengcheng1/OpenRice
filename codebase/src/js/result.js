@@ -4,10 +4,6 @@ const filterValue = document.getElementById('selectedTag');
 populateGallery("all");
 
 
-/* 
-    const filterValue: Use to store the selected category for filtering result, you can return the value by using filterValue.value.
-*/
-
 function clearCategory() {
     categoryTags.forEach(button => {
         button.classList.remove('category-tag-clicked');
@@ -54,10 +50,10 @@ clickedTags.forEach(button => {
 function populateGallery(filter) {
     for (let i = 1; i < 5; i++) {
         var data = JSON.parse(localStorage.getItem(i.toString()));
-        var category = data.category;
         if (data == null) {
-            return;
+            continue;
         }
+        var category = data.category;
         var listing = document.querySelector('#ingredient-list-template').content.cloneNode(true);
         listing.querySelector('#gallery-item').setAttribute('data-value', i.toString());
         listing.querySelector('#listing-name').textContent = data.name;
@@ -71,5 +67,3 @@ function populateGallery(filter) {
         }
     }
 }
-
-// Check for category each time cause we need to change svg based on category but if it doesn't match the filter, we just don't append and go next on the loop
