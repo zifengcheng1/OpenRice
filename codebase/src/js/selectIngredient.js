@@ -25,5 +25,10 @@ confirmBTN.addEventListener('click', function(){
     localStorage.setItem("lockersFilled", lockersFilled.toString())
     var link = "./select-Successful.html?locker=";
     link = link + lockerNum;
-    window.location.href= link;
+    let socket = new WebSocket("ws://localhost:8081")
+    socket.onopen = () => socket.send('o');
+    setTimeout(function () {
+        window.location.href= link;
+      }, 150);
+    
 })

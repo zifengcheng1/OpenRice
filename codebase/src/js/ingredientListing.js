@@ -57,17 +57,13 @@ btnTags.forEach(button => {
 });
 
 submitBTN.addEventListener('click', store_submission, useCapture=true);
-submitBTN.addEventListener('click', async () => {
-    ports = await navigator.serial.getPorts()
-    let port = await ports[0]
-    await port.open({ baudRate: 9600 });
-    setTimeout(async () => {
-        let encoder = await new TextEncoder();
-        let writer = await port.writable.getWriter();
-        await writer.write(encoder.encode('o'));
-        await writer.releaseLock();
+submitBTN.addEventListener('click', function () {
+    let socket = new WebSocket("ws://localhost:8081")
+    socket.onopen = () => socket.send('o');
+    setTimeout(function () {
         window.location.href ='./listing-successful.html';
-      }, 2000);
+      }, 150);
+    
     
     //let port = ports[0];
     
