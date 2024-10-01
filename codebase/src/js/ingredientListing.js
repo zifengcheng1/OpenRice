@@ -63,22 +63,6 @@ submitBTN.addEventListener('click', function () {
     setTimeout(function () {
         window.location.href ='./listing-successful.html';
       }, 150);
-    
-    
-    //let port = ports[0];
-    
-    //const writer = port.writable.getWriter();
-    //const data = new Uint8Array([111]);
-    //await writer.write(data);
-    
-    
-    /** const textEncoder = new TextEncoderStream()
-    const writableStreamClosed = textEncoder.readable.pipeTo(port.writable)
-    const writer = textEncoder.writable.getWriter()
-    await writer.write("o")
-    //await writer.close();
-    //await port.close();
-    */
 })
 
 
@@ -91,8 +75,6 @@ function store_submission() {
     submission.expiryDate = expiryDate.value;
     var emptyLocker = lockerNum();
     localStorage.setItem(emptyLocker.toString(), JSON.stringify(submission));
-    //port = await navigator.serial.requestPort();
-    //await port.open({ baudRate: 9600 });
 }
 
 function lockerNum() {
