@@ -1,15 +1,23 @@
+openPort()
 const textField = document.getElementById('textField');
 const submitBTN = document.getElementById('submit-btn');
-var port = 0;
 textField.addEventListener('input', checkInput);
 //usbProductId: 67
 //usbVendorIdL 9025
 let usbProductId = 67
 let usbVendorId = 9025
 
-submitBTN.addEventListener('click', async () => {
-    //port = await navigator.serial.requestPort();
-    //await port.open({ baudRate: 9600 });
+submitBTN.addEventListener('click', function() {
+    /** 
+    port = await navigator.serial.requestPort();
+    await port.open({ baudRate: 9600 });
+    const textEncoder = new TextEncoderStream()
+    const writableStreamClosed = textEncoder.readable.pipeTo(port.writable)
+    const writer = textEncoder.writable.getWriter()
+    await writer.write('c')
+    await writer.close()
+    await port.close()
+    */
     window.location.href='./selection.html'
 })
 
@@ -40,4 +48,27 @@ function isEmpty(num) {
         return true;
     }
     return false;
+}
+
+async function openPort() {
+    try {
+        let ports = await navigator.serial.getPorts();
+        if (ports.length > 0) {
+            let port = ports[0];
+            //await closePort(port);
+            await port.open({ baudRate: 9600 });
+            let writer = port.writable.getWriter()
+        } else {
+            port = await navigator.serial.requestPort();            
+            await port.open({ baudRate: 9600 });
+        }
+    } catch (error) {
+        console.error("Failed to open the port:", error);
+    }
+}
+
+async function closePort(port) {
+    if (port.readable || port.writable) {
+        await port.close();
+    }
 }

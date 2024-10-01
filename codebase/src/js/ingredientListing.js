@@ -1,6 +1,3 @@
-if (localStorage.getItem("lockersFilled") == "4") {
-    window.location.href="listing-successful.html"
-}
 
 const btnTags = document.querySelectorAll('.btn-tag');
 const tagInput = document.getElementById('selectedTag');
@@ -61,19 +58,31 @@ btnTags.forEach(button => {
 
 submitBTN.addEventListener('click', store_submission, useCapture=true);
 submitBTN.addEventListener('click', async () => {
-    
-    const port = await navigator.serial.requestPort();
+    ports = await navigator.serial.getPorts()
+    let port = await ports[0]
     await port.open({ baudRate: 9600 });
-    const writer = port.writable.getWriter()
-    const data = new Uint8Array([99])
-    await writer.write(data)
-    /**
-    const textEncoder = new TextEncoderStream()
+    setTimeout(async () => {
+        let encoder = await new TextEncoder();
+        let writer = await port.writable.getWriter();
+        await writer.write(encoder.encode('o'));
+        await writer.releaseLock();
+        window.location.href ='./listing-successful.html';
+      }, 2000);
+    
+    //let port = ports[0];
+    
+    //const writer = port.writable.getWriter();
+    //const data = new Uint8Array([111]);
+    //await writer.write(data);
+    
+    
+    /** const textEncoder = new TextEncoderStream()
     const writableStreamClosed = textEncoder.readable.pipeTo(port.writable)
     const writer = textEncoder.writable.getWriter()
-    await writer.write("c")
-    **/
-    //window.location.href='./listing-successful.html';
+    await writer.write("o")
+    //await writer.close();
+    //await port.close();
+    */
 })
 
 
