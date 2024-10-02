@@ -13,6 +13,7 @@ window.addEventListener("load", addListing);
 
 /**
  * Increment the number of lockers filled by one and display the correct locker
+ * to the user
  */
 function addListing() {
     var lockerNum = Params.get('locker');

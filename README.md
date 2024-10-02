@@ -9,6 +9,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#setup">Setup</a></li>
       </ul>
     </li>
   </ol>
@@ -20,4 +21,15 @@ Welcome to team OpenRice. We are developing a system for large student accommoda
 ## Getting Started
 
 ### Prerequisites
+#### Node.js
+Download and install Node.js from https://nodejs.org/en
+
+### Setup
+#### Download Zip
+Download this archive as a zip file and extract to your chosen directory
+
+#### Start server
+Start a terminal in the extracted folder and run 
+node .\Codebase\src\js\server.mjs
+
 
