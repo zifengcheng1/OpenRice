@@ -1,17 +1,27 @@
 import { SerialPort } from 'serialport'
 import { WebSocketServer } from "ws";
 
-const PORT = new SerialPort({ path: 'COM7', baudRate: 9600})
+const PORT = new SerialPort({ path: 'COM7', baudRate: 19200})
 const SERVER_PORT = 8081
 let wss = new WebSocketServer({port: SERVER_PORT})
 let connections = new Array
 
 function openLocker(lockerNum) {
-    PORT.write('o')
+    PORT.write('o', function (err) {
+        if (err) {
+            console.log("Error opening")
+            console.log(err)
+        }
+    })
 }
 
 function closeLocker(lockerNum) {
-    PORT.write('c')
+    PORT.write('c', function (err) {
+        if (err) {
+            console.log("Error opening")
+            console.log(err)
+        }
+    })
 }
 
 wss.on('connection', handleConnection)

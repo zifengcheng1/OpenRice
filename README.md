@@ -22,14 +22,14 @@ Welcome to team OpenRice. We are developing a system for large student accommoda
 
 ### Prerequisites
 * Node.js
-Download and install Node.js from https://nodejs.org/en
+  * Download and install Node.js from https://nodejs.org/en
 
 ### Setup
 * Download Zip
-Download this archive as a zip file and extract to your chosen directory
+  * Download this archive as a zip file and extract to your chosen directory
 
 * Start server
-Start a terminal in the extracted folder and run 
+  * Start a terminal in the extracted folder and run 
 ```sh
 node .\Codebase\src\js\server.mjs
 ```
