@@ -25,11 +25,9 @@ Welcome to team OpenRice. We are developing a system for large student accommoda
   * Download and install Node.js from https://nodejs.org/en
 
 ### Setup
-* Download Zip
-  * Download this archive as a zip file and extract to your chosen directory
+1. Download this repository as a zip file and extract to your chosen directory
 
-* Start server
-  * Start a terminal in the extracted folder and run 
+2. Start a terminal in the extracted folder and run 
 ```sh
 node .\Codebase\src\js\server.mjs
 ```
