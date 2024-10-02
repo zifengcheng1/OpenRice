@@ -1,6 +1,7 @@
 const categoryTags = document.querySelectorAll('.category-tag');
 const clickedTags = document.querySelectorAll('.category-tag-clicked');
 const filterValue = document.getElementById('selectedTag');
+
 populateGallery("all");
 
 
@@ -47,6 +48,10 @@ clickedTags.forEach(button => {
     });
 });
 
+/**
+ * Populates the gallery from stored listings dynamically using a listing template 
+ * @param {String} filter A string representing the type of listings to show
+ */
 function populateGallery(filter) {
     for (let i = 1; i < 5; i++) {
         var data = JSON.parse(localStorage.getItem(i.toString()));

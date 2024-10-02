@@ -6,6 +6,7 @@ const origin = document.getElementById('origin');
 const purchaseDate = document.getElementById('purchaseDate');
 const expiryDate = document.getElementById('expiryDate');
 const submitBTN = document.getElementById('submitBTN');
+const emptyLocker = lockerNum();
 
 /* 
     const tagInput: Use to store the selected category, you can return the value by using tagInput.value
@@ -60,8 +61,10 @@ submitBTN.addEventListener('click', store_submission, useCapture=true);
 submitBTN.addEventListener('click', function () {
     let socket = new WebSocket("ws://localhost:8081")
     socket.onopen = () => socket.send('o');
+    var link = "./listing-successful.html?locker=";
+    link = link + emptyLocker;
     setTimeout(function () {
-        window.location.href ='./listing-successful.html';
+        window.location.href =link;
       }, 150);
 })
 
@@ -73,7 +76,6 @@ function store_submission() {
     submission.origin = origin.value;
     submission.purchaseDate = purchaseDate.value;
     submission.expiryDate = expiryDate.value;
-    var emptyLocker = lockerNum();
     localStorage.setItem(emptyLocker.toString(), JSON.stringify(submission));
 }
 
