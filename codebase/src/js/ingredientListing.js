@@ -60,7 +60,7 @@ btnTags.forEach(button => {
 submitBTN.addEventListener('click', store_submission, useCapture=true);
 submitBTN.addEventListener('click', function () {
     let socket = new WebSocket("ws://localhost:8081")
-    socket.onopen = () => socket.send('o');
+    socket.onopen = () => socket.send(emptyLocker);
     var link = "./listing-successful.html?locker=";
     link = link + emptyLocker;
     setTimeout(function () {

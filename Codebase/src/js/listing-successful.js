@@ -2,8 +2,9 @@ const Params = new URLSearchParams(window.location.search);
 const DoneBTN = document.getElementById("doneBTN");
 
 DoneBTN.addEventListener('click', function () {
+    var lockerNum = Params.get('locker');
     let socket = new WebSocket("ws://localhost:8081")
-    socket.onopen = () => socket.send('c');
+    socket.onopen = () => socket.send(lockerNum);
     setTimeout(function () {
         window.location.href='./selection.html';
       }, 150);

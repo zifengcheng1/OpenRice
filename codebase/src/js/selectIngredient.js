@@ -26,7 +26,7 @@ confirmBTN.addEventListener('click', function(){
     var link = "./select-Successful.html?locker=";
     link = link + lockerNum;
     let socket = new WebSocket("ws://localhost:8081")
-    socket.onopen = () => socket.send('o');
+    socket.onopen = () => socket.send(lockerNum);
     setTimeout(function () {
         window.location.href= link;
       }, 150);

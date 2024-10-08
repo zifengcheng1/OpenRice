@@ -7,7 +7,7 @@ let wss = new WebSocketServer({port: SERVER_PORT})
 let connections = new Array
 
 function openLocker(lockerNum) {
-    PORT.write('o', function (err) {
+    PORT.write('o' + lockerNum, function (err) {
         if (err) {
             console.log("Error opening")
             console.log(err)
@@ -16,9 +16,9 @@ function openLocker(lockerNum) {
 }
 
 function closeLocker(lockerNum) {
-    PORT.write('c', function (err) {
+    PORT.write('c' + lockerNum, function (err) {
         if (err) {
-            console.log("Error opening")
+            console.log("Error closing")
             console.log(err)
         }
     })
@@ -38,18 +38,13 @@ function handleConnection(client) {
 }
 
 function handleCommands(command) {
-    command = command.toString()
     console.log("Sending to arduino")
-    switch(command) {
-        case 'o':
-            console.log("Opening")
-            openLocker(1)
-            break;
-        case 'c':
-            console.log("Closing")
-            closeLocker(1)
-            break;
-    }
+    PORT.write(command, function (err) {
+        if (err) {
+            console.log("Error sending")
+            console.log(err)
+        }
+    })
 }
 
 console.log("Server started")
