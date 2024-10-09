@@ -1,11 +1,7 @@
-//openPort()
 const textField = document.getElementById('textField');
 const submitBTN = document.getElementById('submit-btn');
+
 textField.addEventListener('input', checkInput);
-//usbProductId: 67
-//usbVendorIdL 9025
-let usbProductId = 67
-let usbVendorId = 9025
 
 submitBTN.addEventListener('click', function() {
     window.location.href='./selection.html'
@@ -21,21 +17,4 @@ function checkInput() {
         submitBTN.classList.remove('btn-primary');
         submitBTN.classList.add('btn-primary-inactive');
     }
-}
-
-function lockerNum() {
-    const lockers = [1,2,3,4];
-    var emptyLocker = lockers.findIndex(isEmpty);
-    if (emptyLocker >= 0) {
-        return lockers[emptyLocker];
-    } else {
-        return 0;
-    }
-}
-
-function isEmpty(num) {
-    if (localStorage.getItem(num.toString()) == null) {
-        return true;
-    }
-    return false;
 }

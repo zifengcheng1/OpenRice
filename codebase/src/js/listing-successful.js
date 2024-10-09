@@ -1,6 +1,7 @@
 const Params = new URLSearchParams(window.location.search);
 const DoneBTN = document.getElementById("doneBTN");
 
+// Close locker once user clicks done
 DoneBTN.addEventListener('click', function () {
     var lockerNum = Params.get('locker');
     let socket = new WebSocket("ws://localhost:8081")
@@ -26,6 +27,7 @@ function addListing() {
     document.getElementById("locker").innerText = lockerNum
 }
 
+// Returns an empty locker if available
 function lockerNum() {
     const lockers = [1,2,3,4];
     var emptyLocker = lockers.findIndex(isEmpty);
@@ -36,6 +38,7 @@ function lockerNum() {
     }
 }
 
+// Check if a specific locker index is empty
 function isEmpty(num) {
     if (localStorage.getItem(num.toString()) == null) {
         return true;

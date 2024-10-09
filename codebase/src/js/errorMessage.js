@@ -1,8 +1,12 @@
+// Popup handling when all lockers are full
+
 const listingBTN = document.getElementById('listing-btn');
 const popupScreen = document.querySelector('.popup-screen'); 
 const cancelBTN = document.getElementById('cancel-btn');
 
 
+// Display popup if lockers are all full or initialise storage variable 
+// if not exists
 listingBTN.addEventListener('click', function() {
     if (localStorage.getItem("lockersFilled") == null) {
         localStorage.setItem("lockersFilled", "0");

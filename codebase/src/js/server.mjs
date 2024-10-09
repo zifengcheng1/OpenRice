@@ -1,28 +1,12 @@
 import { SerialPort } from 'serialport'
 import { WebSocketServer } from "ws";
 
+// Connect to arduino
 const PORT = new SerialPort({ path: 'COM7', baudRate: 19200})
 const SERVER_PORT = 8081
+// Create server
 let wss = new WebSocketServer({port: SERVER_PORT})
 let connections = new Array
-
-function openLocker(lockerNum) {
-    PORT.write('o' + lockerNum, function (err) {
-        if (err) {
-            console.log("Error opening")
-            console.log(err)
-        }
-    })
-}
-
-function closeLocker(lockerNum) {
-    PORT.write('c' + lockerNum, function (err) {
-        if (err) {
-            console.log("Error closing")
-            console.log(err)
-        }
-    })
-}
 
 wss.on('connection', handleConnection)
 
