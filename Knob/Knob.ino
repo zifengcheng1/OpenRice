@@ -9,54 +9,50 @@
 
 #include <Servo.h>
 
-
-const int BUTTON1_PIN = 7;  
-const int BUTTON2_PIN = 6; 
 const int LOCKER1 = 0;
 const int LOCKER2 = 1;
 const int LOCKER3 = 2;
 const int LOCKER4 = 3;
 const int OPEN = 1;
 const int CLOSED = 0;
+const int CLOSED_ANGLE = 160;
+const int OPEN_ANGLE = 60;
+const int PIN_ONE = 8;
+const int PIN_TWO = 9;
+const int PIN_THREE = 10;
+const int PIN_FOUR = 11;
+const int BAUDRATE = 19200;
 
-int motor_no = 1;
-
-int lockers[] = {0, 0, 0, 0 }
+// Array to store locker states
+int lockers[] = {CLOSED, CLOSED, CLOSED, CLOSED};
 
 Servo servo1; 
 Servo servo2; 
 Servo servo3; 
 Servo servo4; 
-      // the number of the pushbutton pin
+
+// Start serial communication and set motors to closed by default
 void setup() {
-  // initialize serial communication at 9600 bits per second:
-  Serial.begin(19200);
-  // initialize the pushbutton pin as an pull-up input
-  // the pull-up input pin will be HIGH when the switch is open and LOW when the switch is closed.
-  pinMode(BUTTON1_PIN, INPUT_PULLUP);
-  pinMode(BUTTON2_PIN, INPUT_PULLUP);
+  Serial.begin(BAUDRATE);
 
-  servo1.attach(8); 
-  servo1.write(160); 
+  servo1.attach(PIN_ONE); 
+  servo1.write(CLOSED_ANGLE); 
 
-  servo2.attach(9); 
-  servo2.write(160); 
+  servo2.attach(PIN_TWO); 
+  servo2.write(CLOSED_ANGLE); 
 
-  servo3.attach(10); 
-  servo3.write(160); 
+  servo3.attach(PIN_THREE); 
+  servo3.write(CLOSED_ANGLE); 
 
-  servo4.attach(11); 
-  servo4.write(160); 
+  servo4.attach(PIN_FOUR); 
+  servo4.write(CLOSED_ANGLE); 
 
 }
 void loop() {
-  // read the state of the switch/button:
-  int buttonState1 = digitalRead(BUTTON1_PIN);
-  int buttonState2 = digitalRead(BUTTON2_PIN);
-
   if (Serial.available()) { // check if data is available to read
-    char receivedChar = Serial.read(); // read the incoming byte
-    switch (--receivedChar) {
+    int lockerNum = Serial.parseInt(); // read the number
+    // Pre-decrement to align locker values
+    switch (--lockerNum) {
       case LOCKER1:
         moveLocker(LOCKER1);
         break;
@@ -73,40 +69,43 @@ void loop() {
   }
 }
 
+// Open given locker
 void openLocker(int motor_no){
   switch (motor_no) {
       case LOCKER1:
-        servo1.write(60); 
+        servo1.write(OPEN_ANGLE); 
         break;
       case LOCKER2:
-        servo2.write(60); 
+        servo2.write(OPEN_ANGLE); 
         break;
       case LOCKER3:
-        servo3.write(60); 
+        servo3.write(OPEN_ANGLE); 
         break;
       case LOCKER4:
-        servo4.write(60); 
+        servo4.write(OPEN_ANGLE); 
         break;
     }
 }
 
+// Close given locker
 void closeLocker(int motor_no){
       switch (motor_no) {
       case LOCKER1:
-        servo1.write(160); 
+        servo1.write(CLOSED_ANGLE); 
         break;
       case LOCKER2:
-        servo2.write(160); 
+        servo2.write(CLOSED_ANGLE); 
         break;
       case LOCKER3:
-        servo3.write(160); 
+        servo3.write(CLOSED_ANGLE); 
         break;
       case LOCKER4:
-        servo4.write(160); 
+        servo4.write(CLOSED_ANGLE); 
         break;
     }
 }
 
+// Close given locker if open, open given locker if closed
 void moveLocker(int motor_no) {
   switch (motor_no) {
     case LOCKER1:
