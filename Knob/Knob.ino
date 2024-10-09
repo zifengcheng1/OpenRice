@@ -17,10 +17,10 @@ const int OPEN = 1;
 const int CLOSED = 0;
 const int CLOSED_ANGLE = 160;
 const int OPEN_ANGLE = 60;
-const int PIN_ONE = 8;
-const int PIN_TWO = 9;
-const int PIN_THREE = 10;
-const int PIN_FOUR = 11;
+const int PIN_ONE = 10;
+const int PIN_TWO = 8;
+const int PIN_THREE = 11;
+const int PIN_FOUR = 9;
 const int BAUDRATE = 19200;
 
 // Array to store locker states
