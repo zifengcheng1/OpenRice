@@ -134,4 +134,3 @@ Backend and Frontend Setup
    git clone https://github.com/zifengcheng1/OpenRice.git
    ```
 
-

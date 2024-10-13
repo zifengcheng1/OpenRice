@@ -1,6 +1,3 @@
-if (localStorage.getItem("lockersFilled") == "4") {
-    window.location.href="listing-successful.html"
-}
 
 const btnTags = document.querySelectorAll('.btn-tag');
 const tagInput = document.getElementById('selectedTag');
@@ -9,6 +6,7 @@ const origin = document.getElementById('origin');
 const purchaseDate = document.getElementById('purchaseDate');
 const expiryDate = document.getElementById('expiryDate');
 const submitBTN = document.getElementById('submitBTN');
+const emptyLocker = lockerNum();
 
 /* 
     const tagInput: Use to store the selected category, you can return the value by using tagInput.value
@@ -25,6 +23,7 @@ function clearCategory() {
     })
 }
 
+// Check if all form fields are filled and allow form submission if so
 function checkInput() {
     if(tagInput.value && itemName.value && origin.value && purchaseDate.value && expiryDate.value){
         submitBTN.disabled = false;
@@ -59,12 +58,21 @@ btnTags.forEach(button => {
     field.addEventListener('input', checkInput);
 });
 
+// Storm form data on form submission
 submitBTN.addEventListener('click', store_submission, useCapture=true);
-submitBTN.addEventListener('click', function(){
-    window.location.href='./listing-successful.html';
+
+// Send locker to open to server on form submission
+submitBTN.addEventListener('click', function () {
+    let socket = new WebSocket("ws://localhost:8081")
+    socket.onopen = () => socket.send(emptyLocker);
+    var link = "./listing-successful.html?locker=";
+    link = link + emptyLocker;
+    setTimeout(function () {
+        window.location.href =link;
+      }, 150);
 })
 
-
+// Store form data to localStorage in JSON format
 function store_submission() {
     const submission = new Object();
     submission.category = tagInput.value;
@@ -72,14 +80,13 @@ function store_submission() {
     submission.origin = origin.value;
     submission.purchaseDate = purchaseDate.value;
     submission.expiryDate = expiryDate.value;
-    var emptyLocker = lockerNum();
     localStorage.setItem(emptyLocker.toString(), JSON.stringify(submission));
 }
 
+// Returns an empty locker if available
 function lockerNum() {
     const lockers = [1,2,3,4];
     var emptyLocker = lockers.findIndex(isEmpty);
-    console.log(emptyLocker)
     if (emptyLocker >= 0) {
         return lockers[emptyLocker];
     } else {
@@ -87,6 +94,7 @@ function lockerNum() {
     }
 }
 
+// Check if a specific locker index is empty
 function isEmpty(num) {
     if (localStorage.getItem(num.toString()) == null) {
         return true;

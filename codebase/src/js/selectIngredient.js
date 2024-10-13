@@ -3,6 +3,7 @@ const popupScreen = document.querySelector('.popup-screen');
 const cancelBTN = document.getElementById('cancel-btn');
 const confirmBTN = document.getElementById('confirm-btn');
 
+// Loading of popup content based on listing clicked
 galleryItem.forEach(div => {
     div.addEventListener('click', function(){ 
         var name = div.querySelector('#listing-name').textContent;
@@ -17,6 +18,7 @@ cancelBTN.addEventListener('click', function() {
     popupScreen.style.display="none";
 });
 
+// Clear locker and open locker for retrieval
 confirmBTN.addEventListener('click', function(){
     var lockerNum = popupScreen.querySelector('#dest-locker').textContent;
     var lockersFilled = parseInt(localStorage.getItem("lockersFilled"));
@@ -25,5 +27,10 @@ confirmBTN.addEventListener('click', function(){
     localStorage.setItem("lockersFilled", lockersFilled.toString())
     var link = "./select-Successful.html?locker=";
     link = link + lockerNum;
-    window.location.href= link;
+    let socket = new WebSocket("ws://localhost:8081")
+    socket.onopen = () => socket.send(lockerNum);
+    setTimeout(function () {
+        window.location.href= link;
+      }, 150);
+    
 })
