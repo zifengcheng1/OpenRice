@@ -129,7 +129,7 @@ Arduino Setup
 Backend and Frontend Setup
 1. Clone the repository
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/zifengcheng1/OpenRice.git
    ```
 
 
