@@ -4,7 +4,8 @@ Welcome to Team OpenRice! We are developing a system for large student accommoda
 <br />
 
 <!-- TABLE OF CONTENTS -->
-## Table of Contents
+<details>
+  <summary>Table of Contents</summary>
   <ol>
     <li>
       <a href="project-overview">Project Overview</a>
@@ -20,6 +21,7 @@ Welcome to Team OpenRice! We are developing a system for large student accommoda
       </ul>
     </li>
   </ol>
+</details>
 <br />
 
 ## Project Overview
