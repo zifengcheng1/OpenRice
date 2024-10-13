@@ -83,7 +83,7 @@ In shared student housing, leftover or unused food ingredients often go to waste
         Frontend: HTML, CSS, Javascript, Tailwind (CSS framework)
       </li>
       <li>
-        Backend: [James]
+        Backend: NodeJS
       </li>
     </ul>
   </li>
@@ -103,10 +103,7 @@ In shared student housing, leftover or unused food ingredients often go to waste
 
 ## Setup and Installation
 Prerequisites
-* npm
-```sh
-npm install npm@latest -g
-```
+* Download and install nodeJS + npm from https://nodejs.org/en
 <br>
 
 Arduino Setup
@@ -121,7 +118,7 @@ Arduino Setup
         Select the correct board and port in Arduino IDE.
       </li>
       <li>
-        Upload the provided `locker_control.ino` file to the board.
+        Upload the provided `Knob.ino` file to the board located in the Knob folder.
       </li>
     </ul>
   </li>
@@ -129,8 +126,15 @@ Arduino Setup
 <br>
 
 Backend and Frontend Setup
-1. Clone the repository
+1. Clone the repository or download the repository as a zip file
    ```sh
    git clone https://github.com/zifengcheng1/OpenRice.git
    ```
+2. If you downloaded as a zip, extract to a directory of your choosing
+3. Open a command line terminal in the folder where you saved the repository
+4. To start the server, enter this command:
+   ```sh
+   node codebase/src/js/server.mjs
+   ```
+5. Access the website by navigating to codebase/src and opening index.html with Chrome
 
