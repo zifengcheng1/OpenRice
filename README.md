@@ -1,6 +1,7 @@
 ## OpenRice
 Welcome to Team OpenRice! We are developing a system for large student accommodation complexes that allows tenants to share unused food ingredients with each other. 
 <br><br>Our mission is to combat food waste through large-scale collaboration while minimising the effort and time required from users.
+<br />
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -19,9 +20,12 @@ Welcome to Team OpenRice! We are developing a system for large student accommoda
       </ul>
     </li>
   </ol>
+<br />
 
 ## Project Overview
 In shared student housing, leftover or unused food ingredients often go to waste. OpenRice offers a simple, collaborative platform where tenants can list food items they no longer need, making them available for donation to others. This encourages sustainable habits, reduces waste, and helps students save money.
+<br />
+<br />
 
 ## Key Features
 <ol>
@@ -41,6 +45,7 @@ In shared student housing, leftover or unused food ingredients often go to waste
     User-friendly Interface: Designed for ease of use, users can quickly and easily list and claim ingredients effortlessly.
   </li>
 </ol>
+<br />
 
 ## How It Works
 <ol>
@@ -54,6 +59,7 @@ In shared student housing, leftover or unused food ingredients often go to waste
     Locker Automation: When an item is listed or claimed, the system automatically opens the corresponding locker via a servo motor.
   </li>
 </ol>
+<br />
 
 ## System Requirements
 <ol>
@@ -91,6 +97,7 @@ In shared student housing, leftover or unused food ingredients often go to waste
     </ul>
   </li>
 </ol>
+<br />
 
 ## Setup and Installation
 Prerequisites
@@ -99,6 +106,7 @@ Prerequisites
 npm install npm@latest -g
 ```
 <br>
+
 Arduino Setup
 <ol>
   <li>
@@ -116,5 +124,12 @@ Arduino Setup
     </ul>
   </li>
 </ol>
+<br>
+
+Backend and Frontend Setup
+1. Clone the repository
+   ```sh
+   git clone https://github.com/github_username/repo_name.git
+   ```
 
 
